@@ -9,6 +9,23 @@ data "ibm_pi_key" "key" {
   pi_key_name          = var.ssh_key_name
 }
 
+data "ibm_pi_catalog_images" "catalog_images" {
+  sap                  = true
+  vtl                  = true
+  pi_cloud_instance_id = local.pid
+}
+
+data "ibm_pi_images" "cloud_instance_images" {
+  pi_cloud_instance_id = local.pid
+}
+
+locals {
+  stock_image_name = "7300-00-01"
+  catalog_image = [for x in data.ibm_pi_catalog_images.catalog_images.images : x if x.name == local.stock_image_name]
+  private_image = [for x in data.ibm_pi_images.cloud_instance_images.image_info : x if x.name == local.stock_image_name]
+  private_image_id = length(local.private_image) > 0 ? local.private_image[0].id  : ""
+}
+
 data "ibm_pi_image" "power_image" {
   pi_cloud_instance_id = local.cloud_instance_id
   pi_image_name        = var.image_name
