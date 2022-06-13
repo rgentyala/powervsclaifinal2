@@ -20,7 +20,7 @@ data "ibm_pi_images" "cloud_instance_images" {
 }
 
 locals {
-  stock_image_name = "7300-00-01"
+  stock_image_name = "IBMi-74-05-2924-1"
   catalog_image = [for x in data.ibm_pi_catalog_images.catalog_images.images : x if x.name == local.stock_image_name]
   private_image = [for x in data.ibm_pi_images.cloud_instance_images.image_info : x if x.name == local.stock_image_name]
   private_image_id = length(local.private_image) > 0 ? local.private_image[0].id  : ""
