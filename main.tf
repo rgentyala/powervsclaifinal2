@@ -12,7 +12,7 @@ data "ibm_pi_key" "key" {
 data "ibm_pi_catalog_images" "catalog_images" {
   sap                  = true
   vtl                  = true
-  pi_cloud_instance_id = local.pid
+#  pi_cloud_instance_id = local.pid
 }
 
 data "ibm_pi_images" "cloud_instance_images" {
