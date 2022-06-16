@@ -18,7 +18,7 @@ resource "ibm_pi_image" "testacc_image" {
   pi_image_secret_key = var.buck_secretkey
   pi_image_bucket_region = var.buck_region
   pi_image_bucket_file_name = var.buck_imagename
-  pi_image_storage_type = var.img_strtyp
+  pi_image_storage_type = var.img_storage_type
 }
 
 data "ibm_pi_catalog_images" "catalog_images" {
