@@ -1,7 +1,7 @@
 resource "ibm_pi_key" "power_sshkey" {
   pi_key_name          = var.ssh_key_name
   pi_ssh_key           = var.ssh_key
-  pi_cloud_instance_id = local.cloud_instance_id
+  pi_cloud_instance_id = "new"
 }
 data "ibm_pi_key" "key" {
   depends_on           = [ibm_pi_key.power_sshkey]
@@ -10,8 +10,8 @@ data "ibm_pi_key" "key" {
 }
 
 resource "ibm_pi_image" "testacc_image" {
-  pi_image_name       = "test_image"
-  pi_cloud_instance_id = local.cloud_instance_id
+  pi_image_name       = "new"
+  pi_cloud_instance_id = "new"
   pi_image_bucket_name = var.buck_name
   pi_image_bucket_access = var.buck_access
   pi_image_access_key = var.buck_accesskey
@@ -24,11 +24,11 @@ resource "ibm_pi_image" "testacc_image" {
 data "ibm_pi_catalog_images" "catalog_images" {
   sap                  = true
   vtl                  = true
-  pi_cloud_instance_id = local.pid
+  pi_cloud_instance_id = "new"
 }
 
 data "ibm_pi_images" "cloud_instance_images" {
-  pi_cloud_instance_id = local.cloud_instance_id
+  pi_cloud_instance_id = "new"
 }
 
 resource "ibm_pi_network" "power_network" {
@@ -51,7 +51,7 @@ data "ibm_pi_network" "network" {
 
 
 resource "ibm_pi_instance" "instance" {
-  pi_cloud_instance_id = local.cloud_instance_id
+  pi_cloud_instance_id = "new"
   pi_memory            = var.memory
   pi_processors        = var.processors
   pi_instance_name     = var.instance_name
