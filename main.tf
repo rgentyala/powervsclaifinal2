@@ -17,7 +17,7 @@ resource "ibm_pi_image" "testacc_image  "{
   pi_image_access_key = ""
   pi_image_secret_key = ""
   pi_image_bucket_region = "us-south"
-  pi_image_bucket_file_name = "paytester_v1.ova.gz"
+  pi_image_bucket_file_name = ""
   pi_image_storage_type = "tier1"
 }
 
