@@ -7,9 +7,33 @@ variable "crn" {
   default     = "crn:v1:staging:public:power-iaas:dal12:a/efe5e8b9d3f04b948790fe5499bd18bc:6021a723-bcab-4d3f-9985-d0cb2f864f35::"
   description = "Power Systems Virtual Server CRN"
 }
-variable "power_image_name" {
-  description = "Name of the image you want to use"
-  default     = "IBMi-74-05-2924-1"
+variable "buck_name" {
+  description = "Name of the bucket to use"
+  default     = "pt-bucket"
+}
+variable "buck_access" {
+  description = "bucket type to use - private or public"
+  default     = "private"
+}
+variable "buck_accesskey" {
+  description = "bucket (Optional, String, Sensitive) Cloud Object Storage access key; required for buckets with private access."
+  default     = ""
+}
+variable "buck_secretkey" {
+  description = "(Optional, String, Sensitive) Cloud Object Storage secret key; required for buckets with private access."
+  default     = ""
+}
+variable "buck_region" {
+  description = "geographica region like us-south where bucket is located"
+  default     = "us-south"
+}
+variable "buck_imagename" {
+  description = "(Required, String) The name of an image."
+  default     = ""
+}
+variable "img_storage_type" {
+  description = "storage type used for the image"
+  default     = "tier1"
 }
 variable "memory" {
   type        = number
