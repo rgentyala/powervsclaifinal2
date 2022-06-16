@@ -21,15 +21,15 @@ resource "ibm_pi_image" "testacc_image" {
   pi_image_storage_type = var.img_storage_type
 }
 
-data "ibm_pi_catalog_images" "catalog_images" {
-  sap                  = true
-  vtl                  = true
-pi_cloud_instance_id = local.pid
-}
+#data "ibm_pi_catalog_images" "catalog_images" {
+#  sap                  = true
+#  vtl                  = true
+#pi_cloud_instance_id = local.pid
+#}
 
-data "ibm_pi_images" "cloud_instance_images" {
-  pi_cloud_instance_id = local.cloud_instance_id
-}
+#data "ibm_pi_images" "cloud_instance_images" {
+#  pi_cloud_instance_id = local.cloud_instance_id
+#}
 
 resource "ibm_pi_network" "power_network" {
   count                = 1
