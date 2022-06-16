@@ -9,16 +9,16 @@ data "ibm_pi_key" "key" {
   pi_key_name          = var.ssh_key_name
 }
 
-resource "ibm_pi_image" "testacc_image  "{
+resource "ibm_pi_image" "testacc_image" {
   pi_image_name       = "test_image"
   pi_cloud_instance_id = local.cloud_instance_id
-  pi_image_bucket_name = "pt-bucket"
-  pi_image_bucket_access = "private"
-  pi_image_access_key = ""
-  pi_image_secret_key = ""
-  pi_image_bucket_region = "us-south"
-  pi_image_bucket_file_name = ""
-  pi_image_storage_type = "tier1"
+  pi_image_bucket_name = var.buck_name
+  pi_image_bucket_access = var.buck_access
+  pi_image_access_key = var.buck_accesskey
+  pi_image_secret_key = var.buck_secretkey
+  pi_image_bucket_region = var.buck_region
+  pi_image_bucket_file_name = var.buck_imagename
+  pi_image_storage_type = var.img_strtyp
 }
 
 data "ibm_pi_catalog_images" "catalog_images" {
